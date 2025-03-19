@@ -1,0 +1,493 @@
+/* Base styles from original book.css plus previous responsive additions */
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.background {
+    background-image: linear-gradient(to top left, rgba(231, 176, 14, 0.806), lightblue, rgb(101, 205, 36));
+    height: auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    /* Add subtle background animation */
+    animation: gradientShift 15s ease infinite alternate;
+}
+
+/* Background animation */
+@keyframes gradientShift {
+    0% {
+        background-image: linear-gradient(to top left, rgba(231, 176, 14, 0.806), lightblue, rgb(101, 205, 36));
+    }
+    50% {
+        background-image: linear-gradient(to top left, rgba(231, 176, 14, 0.7), rgb(173, 216, 230), rgb(120, 190, 80));
+    }
+    100% {
+        background-image: linear-gradient(to top left, rgba(200, 150, 20, 0.806), rgb(150, 200, 230), rgb(80, 180, 40));
+    }
+}
+
+.card-container {
+    perspective: 1000px;
+    width: 250px;
+    height: 300px;
+    margin-right: 80px;
+    margin-left: 80px;
+    cursor: pointer;
+    position: relative;
+    animation: fadeIn 1s ease-out;
+    /* Add floating animation */
+    animation: fadeIn 1s ease-out, float 6s ease-in-out infinite;
+}
+
+/* Floating animation for cards */
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.card {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.8s ease;
+}
+
+#white-background{
+    width: 200px;
+    height: 300px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.8s ease;  
+}
+
+/* Basic flip effect without any background changes */
+.card-container:hover .card {
+    transform: rotateY(180deg);
+    margin-left: 0px;
+}
+
+.front, .back {
+    position: absolute;
+    width: 200px;
+    height: 300px;
+    backface-visibility: hidden;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: box-shadow 0.3s ease;
+}
+
+.front {
+    z-index: 2;
+    overflow: hidden; /* For the image zoom effect */
+}
+
+/* Specifically target the front card images */
+.front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+    transition: transform 0.5s ease;
+    display: block; /* Prevent inline spacing issues */
+}
+
+.card-container:hover .front img {
+    transform: scale(1.1);
+}
+
+.back {
+    background-color: #4a5568;
+    transform: rotateY(180deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+}
+
+/* Enhanced button styling */
+.btn {
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    border-radius: 100%;
+    transform: scale(1, 1) translate(-50%);
+    transform-origin: 50% 50%;
+}
+
+.btn:hover:after {
+    animation: ripple 1s ease-out;
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(0, 0);
+        opacity: 1;
+    }
+    20% {
+        transform: scale(25, 25);
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: scale(40, 40);
+    }
+}
+
+/* Enhanced details style */
+details {
+    transition: all 0.3s ease;
+    border-radius: 5px;
+    padding: 5px;
+    margin-bottom: 10px;
+    border-left: 0px solid #4a5568;
+}
+
+details:hover {
+    border-left: 5px solid #4a5568;
+    padding-left: 10px;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+details summary {
+    transition: all 0.3s ease;
+    cursor: pointer;
+    outline: none;
+}
+
+details[open] summary {
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+/* Enhanced form styling */
+.form {
+    transition: all 0.3s ease;
+}
+
+.form input {
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    padding: 8px;
+    transition: all 0.3s ease;
+}
+
+.form input:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 8px rgba(52, 152, 219, 0.5);
+    outline: none;
+}
+
+.form button {
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.form button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Typewriter effect for header */
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+header {
+    animation: headerGlow 3s infinite;
+    overflow: hidden;
+    position: relative;
+}
+
+header:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    background: linear-gradient(90deg, transparent, white, transparent);
+    animation: headerLine 2s linear infinite;
+}
+
+@keyframes headerLine {
+    0% {
+        left: -100%;
+    }
+    50% {
+        left: 100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+/* Header animation */
+@keyframes headerGlow {
+    0% {
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    }
+    50% {
+        text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+    }
+    100% {
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    }
+}
+
+/* Rest of the responsive CSS remains unchanged */
+main {
+    flex: 1;
+    padding: 20px 0;
+}
+
+footer {
+    margin-top: auto !important;
+    position: relative;
+    overflow: hidden;
+}
+
+footer:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+}
+
+/* Animation Keyframes */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Button hover effect */
+.btn-info:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* "More Books" button container */
+.more-books-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 20px 0;
+}
+
+#MoreBooks {
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#MoreBooks:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive Media Queries */
+/* Large screens (default) */
+@media (min-width: 1200px) {
+    main {
+        flex-direction: row;
+    }
+    #MoreBooks {
+        width: 25%;
+    }
+}
+
+/* Medium screens (tablets) */
+@media (max-width: 1199px) and (min-width: 768px) {
+    main {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .card-container {
+        margin: 20px;
+    }
+    
+    /* Modified for tablets - less margin shift on hover */
+    .card-container:hover .card {
+        margin-left: 15px;
+    }
+    
+    .d-flex.justify-content-center.p-5 .card {
+        width: 80% !important;
+    }
+    
+    #MoreBooks {
+        width: 40%;
+        font-size: 16px;
+        padding: 10px;
+    }
+}
+
+/* Small screens (phones) */
+@media (max-width: 767px) {
+    main {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .card-container {
+        margin: 20px 0;
+        width: 220px;
+        height: 270px;
+    }
+    
+    /* Remove the margin shift on hover for mobile */
+    .card-container:hover .card {
+        margin-left: 0;
+    }
+    
+    .d-flex.justify-content-center.p-5 {
+        padding: 10px !important;
+    }
+    
+    .d-flex.justify-content-center.p-5 .card {
+        width: 100% !important;
+        padding: 15px !important;
+    }
+    
+    header {
+        font-size: 1.5rem !important;
+        padding: 10px !important;
+    }
+    
+    .h5.text-black.p-2 {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    #MoreBooks {
+        width: 60%;
+        font-size: 14px;
+        padding: 8px;
+    }
+    
+    #footer{
+        margin-top: 40px !important;
+    }
+    
+    .h5.text-black.p-2 article {
+        margin-top: 10px;
+    }
+}
+
+/* Very small screens */
+@media (max-width: 480px) {
+    .card-container {
+        width: 200px;
+        height: 240px;
+    }
+    
+    .d-flex.justify-content-center.p-5 .card {
+        padding: 10px !important;
+    }
+    
+    details summary {
+        font-size: 0.9rem;
+    }
+    
+    details p, details ol {
+        font-size: 0.85rem;
+    }
+    
+    .form {
+        padding: 10px !important;
+    }
+    
+    dt, dd {
+        font-size: 0.9rem;
+    }
+
+    #MoreBooks {
+        width: 80%;
+        font-size: 12px;
+        padding: 6px;
+    }
+}
+
+/* Book detail page responsiveness */
+@media (max-width: 991px) {
+    .d-flex.justify-content-center.p-5 .w-50 {
+        width: 75% !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .d-flex.justify-content-center.p-5 .w-50 {
+        width: 90% !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .d-flex.justify-content-center.p-5 .w-50 {
+        width: 100% !important;
+    }
+}
+
+/* Ensure footer stays at bottom for short content */
+.background {
+    min-height: 101vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main, .d-flex.justify-content-center.p-5 {
+    flex: 1;
+}
+
+/* Detail page image styling */
+.card-img-top {
+    width: 10rem !important;
+    height: auto;
+    max-height: 15rem;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Fix for card details view on small screens */
+@media (max-width: 575px) {
+    .card-img-top {
+        width: 8rem !important;
+    }
+}

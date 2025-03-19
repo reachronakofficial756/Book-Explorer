@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Explorer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="book.css">
+</head>
+
+<body>
+    <div class="background">
+        <header class="h3 text-white text-center p-3" style="background-color: rgb(39, 37, 37);">
+            WELCOME TO THE BOOK EXPLORER
+        </header>
+
+        <div class="h5 text-black p-2 d-flex justify-content-between">
+            EXPLORE THE BOOKS
+            <article class="h6 text-white text-end p-1 mt-1">
+                <a href="index.html" style="text-decoration: none; position: sticky;" class="btn btn-info h6">HOME</a>
+            </article>
+        </div>
+        <main class="d-flex gap-5 justify-content-center">
+
+            <section class="card-container">
+                <div class="card" id="white-background">
+                    <div class="front">
+                        <img src="public/images/abdulkalam.webp" alt="APJ Abdul Kalam Book">
+                    </div>
+                    <div class="back">
+                        <a href="book1.html" style="text-decoration: none; margin-right: 8px;">
+                            <h6 style="color: rgba(230, 231, 236, 0.55);">CLICK FOR DETAILS</h6>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="card-container">
+                <div class="card" id="white-background">
+                    <div class="front">
+                        <img src="public/images/bhagatsingh.jpg" alt="Bhagat Singh Book">
+                    </div>
+                    <div class="back">
+                        <a href="book2.html" style="text-decoration: none; margin-right: 5px;">
+                            <h6 style="color: rgba(230, 231, 236, 0.55);">CLICK FOR DETAILS</h6>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="card-container">
+                <div class="card" id="white-background">
+                    <div class="front">
+                        <img src="public/images/Indian.essays.jpg" alt="Indian Essays Book">
+                    </div>
+                    <div class="back">
+                        <a href="book3.html" style="text-decoration: none;">
+                            <h6 style="color: rgba(230, 231, 236, 0.55);">CLICK FOR DETAILS</h6>
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <div class="more-books-container mt-4">
+            <a href="https://www.amazon.com/s?k=patirotic+books+of+india&crid=2Z5C9MERTCVOJ&sprefix=patirotic+books+of+indi%2Caps%2C372&ref=nb_sb_noss"
+                class="btn btn-light rounded-2 p-2 mb-3" id="MoreBooks">Click For More Books</a>
+        </div>
+        <footer class="h5 bg-dark text-white text-center p-3" id="footer">
+            © From the Explorer-teams | CopyRights Resevered
+        </footer>
+    </div>
+</body>
+
+</html>
